@@ -17,7 +17,7 @@ for k = 1:length(r)
 			return
 		else
 			if d > influence(k)
-				URep = 1/2*(1/(d+r(k))- 1/(influence(k)+r(k)))^2 ...
+				URep = 1/2*(1/(r(k)-d)- 1/(r(k)-influence(k)))^2 ...
 					+ URep;
 			end
 		end
