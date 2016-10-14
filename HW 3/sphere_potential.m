@@ -13,7 +13,7 @@ for k = 1:length(r)
 		if d >= r(k)
 			%Outside Boundary
 			URep = NaN;
-			disp('Outside Boundary')
+% 			disp('Outside Boundary')
 			return
 		else
 			if d > influence(k)
@@ -25,7 +25,7 @@ for k = 1:length(r)
 		if d <= r(k)
 			%Inside obstacle
 			URep = NaN;
-			disp('Inside Obstacle')
+% 			disp('Inside Obstacle')
 			return
 		else
 			%Obstacle

@@ -1,9 +1,19 @@
-load('sphereworld.mat')
-sphereworld_plot_test()
-x = [-1.7 0 0];
-y = [0 0 -1.65];
-for k = 1:length(x)
-	xEval = [x(k);y(k)];
-	grad = sphere_potentialGrad(xEval, world);
-	quiver(x(k), y(k), grad(1), grad(2))
-end
+load('sphereworld')
+sphereworld_plot(world,xGoal)
+
+potential.alpha = 10;
+potential.type = 'quadratic';
+potential.xGoal = xGoal;
+
+
+% f = @(x) potential_total(x, world, potential);
+% hw3_funContour(f)
+% f = @(x) -(sphere_potentialGrad(x, world))%, potential));
+% hw3_funGradField(f, 50)
+% f = @(x) -(potential_attractive(x, potential))
+% hw3_funGradField(f, 50)
+% f = @(x) -(potential_totalGrad(x, world, potential));
+% hw3_funGradField(f, 50)
+
+
+% potential_planner_test('quadratic', .4, .001)
