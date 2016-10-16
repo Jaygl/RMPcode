@@ -1,4 +1,10 @@
 function [val] = wavefront_propogate(val)
-	[i j] = find(val == 0)
-	val = fan(i,j,val, 0);
+	set(0,'RecursionLimit',50000);
+    [i j] = find(val == 0);
+	
+    global VAL
+    VAL = val;
+    fan2(i,j,0);
+  	val = VAL;
+    clear VAL;
 end

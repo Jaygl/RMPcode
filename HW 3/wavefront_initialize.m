@@ -4,14 +4,12 @@ function [val] = wavefront_initialize(xx,yy,xGoal,world)
 	for k = 1:length(xx(1,:))-1
 		if xGoal(1) <= xx(1,k+1) && xGoal(1) >= xx(1,k)
 			found = found + 1;
-			disp('xx')
 			break;
 		end
 	end
 	for j = 1:length(yy(:,1))-1
 		if xGoal(2) <= yy(j+1,1) && xGoal(2) >= yy(j,1)
 			found = found + 1;
-			disp('yy')
 			break
 		end
 	end
