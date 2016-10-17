@@ -26,7 +26,7 @@ for k = 1:size(xStart, 2)
     plot(xEvalAll(1,:),xEvalAll(2,:));
 end
 
-f=@(xEval) potential_totalGrad(xEval, world, potential);
+f=@(xEval) -potential_totalGrad(xEval, world, potential);
 figure
 sphereworld_plot(world,xGoal);
 hw3_funGradField(f, 20);
