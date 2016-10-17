@@ -1,7 +1,8 @@
 function [URep] = sphere_potential(xEval,world)
 %Determine the total repulsive potential at point xEval within world world.
-%xEval is a 2x1 vector with components [x;y]
-%world is a world structure as defined earlier in the HW. 
+%   xEval is a 2x1 vector with components [x;y]
+%   world is a world structure as defined earlier in the HW. 
+%   URep is a scaler denoting the field strength at xEval
 
 %Simplify some variable names
 r = world.rSphereAll;

@@ -3,10 +3,12 @@ function [ xEvalAll ] = potential_planner( xStart,world,potential,epsilon )
 %'world' and potential 'potential'. Takes up to 1000 steps of size epsilon
 %in an attempt to converge on ||grad(U)|| < 10e-3. Saves the intermediate
 %points in xEvalAll
-%   xStart is a 2x1 vector with components [x y]
+%   xStart is a 2x1 vector with components [x; y]
 %   world is a world structure as described previously
 %   potential is a potential structure as described previously
 %   epsilon is a scaler that represents the step size
+%   xEvalAll is a 2xN vector of [x;y] pairs denoting the position at each
+%   step of the planner
 
 xEvalAll = xStart;
 

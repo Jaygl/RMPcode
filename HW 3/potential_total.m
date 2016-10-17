@@ -5,6 +5,7 @@ function [ U ] = potential_total( xEval,world,potential )
 %   xEval is a 2x1 vector with the components [x y]
 %   world is a world structure as defined earlier
 %   potential is a potential structure as defined earlier
+%   U is a scaler quantity that denotes the total field strength at xEval
 
 %Calculate the repulstive and attractive potentials
 URep = sphere_potential(xEval,world);
