@@ -2,7 +2,7 @@ function [ xEvalAll ] = wavefront_planner( xStart,val,xx,yy )
 %Wavefront planner to descend the values in grid val starting at point
 %xStart. xx and yy are are the corresponding linspaces of the grid's
 %physical dimensions. xEvalAll is a 2xNstep array with components
-%xEvalAll(:,n) of [x;y].
+%xEvalAll(:,n) of [x;y] where the coordinates represent the cell midpoint.
 %   xStart is a 2x1 vector defining the start location as [x;y]
 %   val is an initialized and propagated wavefront grid of size
 %   (NGridxNGrid)
