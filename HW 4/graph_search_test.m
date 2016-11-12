@@ -8,10 +8,9 @@ else
     xGrid = [1:10];
     yGrid = [1:10];
     flag = round(rand(10,10));
-    idx = find(flag > 0);
-    mystart = idx(randi(length(idx)));
-    myend = idx(randi(length(idx)));
     graph = grid2graph(xGrid,yGrid,flag);
+    mystart = randi(length(graph));
+    myend = randi(length(graph));
 end
 
 figure
@@ -29,4 +28,22 @@ plot(graph(myend).x(1), graph(myend).x(2), 'rx', 'linewidth', 2)
 if ~bool
     save('MyTestData.mat', 'graph', 'mystart', 'myend', 'flag')
 end
+
+path = graph_search(graph, mystart, myend);
+if length(path) > 0
+    for k = 1:length(path) - 1
+        vals = [graph(path(k)).x graph(path(k+1)).x];
+        plot(vals(1,:), vals(2,:), 'r-')
+    end
+else
+    display('No path found')
+end
+
+
+
+
+
+
+
+
 
