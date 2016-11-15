@@ -1,3 +1,6 @@
+%%Quick script to run animations from the 2 initial conditions provided
+%in the homework.
+
 load('twolink_testData')
 fps = 5;
 figure

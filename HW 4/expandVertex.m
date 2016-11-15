@@ -1,5 +1,5 @@
 function [ graphVector, pqOpen] = expandVertex( graphVector, idxNBest, idxX, idxGoal, pqOpen )
-%EXPANDVERTEX Summary of this function goes here
+%EXPANDVERTEX Expands the node graphVector(idxNBest) by 
 %   Detailed explanation goes here
 g_nbest = graphVector(idxNBest).g;
 
