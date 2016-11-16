@@ -15,9 +15,7 @@ while ~isempty(pqOpen)
     C(end+1) = idxNBest;
     %Check if this is goal location
     if idxNBest == idxGoal
-%         disp('I DID FIND A PATH')
         path = buildPath(graphVector,idxStart,idxGoal);
-        %EXIT... (This seems wrong)
     end
     %Get the list of possible neighbors to expand, no closed nodes
     open_paths = getExpandList(graphVector, idxNBest, C);

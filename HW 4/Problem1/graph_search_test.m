@@ -33,7 +33,7 @@ path = graph_search(graph, mystart, myend);
 if length(path) > 0
     for k = 1:length(path) - 1
         vals = [graph(path(k)).x graph(path(k+1)).x];
-        plot(vals(1,:), vals(2,:), 'r-', 'linewidth', 3)
+        plot(vals(1,:), vals(2,:), 'r-', 'linewidth', 5)
     end
 else
     display('No path found')
