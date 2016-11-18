@@ -1,6 +1,10 @@
 function [  ] = visibility_check_test(  )
-%VISIBILITY_CHECK_TEST Summary of this function goes here
-%   Detailed explanation goes here
+%VISIBILITY_CHECK_TEST loads polgonalWorld.mat, plots the world, and 
+%computes visibility from a point x to the rest of the world. If visibility
+%exists between x and a vertex, a line is drawn between the two on the figure.
+%x has a few pre-selected values specifically for testing, but can also be 
+%generated randomly.
+
 load('polygonalWorld')
 visibility_plotWorld(world)
 
@@ -14,7 +18,10 @@ x = xStart(:,3);
 x = xGoal;
 
 plot(x(1),x(2),'bo')
+
+%Find visibility from x to rest of world
 indeces = visibility_check(world, x)
+%Plot the lines of visibility
 for k = 1:length(indeces)
     %find the vertex with index indeces(k)
     for j = 1:length(world.vertices)

@@ -1,8 +1,11 @@
 function [ graphVector ] = visibility_graph( world )
-%VISIBILITY_GRAPH Summary of this function goes here
-%   Detailed explanation goes here
+%VISIBILITY_GRAPH creates a graphVector structure based on the visibility
+%in world. Each vertex in world is an entry and is linked to all other nodes
+%which have LOS to one another. The indeces of graphVector relate to the index
+%in world.indeces
+%   world is a world structure as previously defined.
 
-
+%Populate all the fields of graphVector except neighborCost.
 for k = 1:length(world.indeces)
     for j = 1:length(world.indeces{k})
         idx = world.indeces{k}(j);
@@ -10,21 +13,12 @@ for k = 1:length(world.indeces)
         neighbors = visibility_check(world, graphVector(idx).x);
         neighbors(find(neighbors == idx)) = [];
         graphVector(idx).neighbors = neighbors;
-%         for m = 1:length(graphVector(idx).neighbors)
-%             for l = 1:length(world.indeces)
-%                 idx_list = world.indeces{l};
-%                 target = find(idx_list == graphVector(idx).neighbors(m));
-%                 if ~isempty(target)
-%                     graphVector(k).neighborsCost(m) = euc_dist(graphVector(idx).x, ...
-%                         world.vertices{l}(:,target));
-%                 end
-%             end
-%         end
         graphVector(idx).g = [];
         graphVector(idx).backpointer = [];
     end
 end
-
+%Now that all graphVector.x's are assigned, calculate neighborCost
+%and update graphVector
 for k = 1:length(graphVector)
     for j = 1:length(graphVector(k).neighbors)
         neighbor = graphVector(k).neighbors(j);

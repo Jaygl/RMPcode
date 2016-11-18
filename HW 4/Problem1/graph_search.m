@@ -1,5 +1,6 @@
 function [ path ] = graph_search( graphVector, idxStart, idxGoal )
-%GRAPH_SEARCH Summary of this function goes here
+%GRAPH_SEARCH graph search algorithm that searches the structure graphVector 
+%for idxGoal from idxStart using the A* algorithm.
 %   Detailed explanation goes here
 path = [];
 C = [];

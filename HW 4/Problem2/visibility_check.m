@@ -14,7 +14,8 @@ for k = 1:length(world.vertices)
     idx = find(mask == 1);
     
     if ~isempty(idx)
-        %on the polygon, need to check self occlusion
+        %on the polygon, need to check self occlusion. Need to wrap
+        %indeces if the it is one of the ends.
         if idx == 1
             prevVertex = world.vertices{k}(:,length(world.indeces{k}));
             nextVertex = world.vertices{k}(:,idx+1);
@@ -32,7 +33,7 @@ for k = 1:length(world.vertices)
 end
 
 for k = 1:length(world.vertices)
-    %We are going to check visibility to each vertex of each polygon
+    %Check visibility to each vertex of each polygon
     temp = world.vertices{k};
     
     for j = 1:length(world.indeces{k})
@@ -53,7 +54,11 @@ for k = 1:length(world.vertices)
         end
         
         if ~SOC
+            %If not self occluded, then check for edge intersection.
+            %If it is self occluded, then we do not bother checking edges.
             collisions = 0;
+            %Check the number of collisions with edges a line from x to 
+            %x_y_target has
             for l = 1:length(world.vertices)
                 for m = 1:length(world.indeces{l})-1
                     collisions = collisions + edge_checkCollision([x x_y_target], ...
