@@ -1,4 +1,9 @@
 function [graphVector] = grid2graph(xGrid, yGrid, flag)
+%GRID2GRAPH takes 2 vectors xGrid and yGrid and an array flag of size
+%(length(xGrid), length(yGrid)) and generates a graphVector structure based
+%on 8 neighbor connectivity. xGrid and yGrid contain the x,y positions of
+%the nodes to be generated, and the logical in flag determines whether a
+%node at that position exists.
 %graphVector
 %	neighbors - array of vertices adjacent to this one
 %	neighborsCost - array of same size to neightbors, contains cost

@@ -23,8 +23,8 @@ elseif (g_nbest + heuristic(graphVector, idxX, idxNBest)) < graphVector(idxX).g
     graphVector(idxX).g = g_nbest + heuristic(graphVector, idxX, idxNBest);
     graphVector(idxX).backpointer = idxNBest;
     %Update pqOpen
-    f = g_nbest + heuristic(graphVector, idxX, idxGoal);
-    pqOpen = priorityUpdate(pqOpen, idxX, f);
+%     f = g_nbest + heuristic(graphVector, idxX, idxGoal);
+%     pqOpen = priorityUpdate(pqOpen, idxX, f);
     
 end
 

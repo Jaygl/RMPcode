@@ -14,8 +14,8 @@ visibility_plotWorld(world)
 x = world.vertices{3}(:,4);
 x = world.vertices{1}(:,2);
 x = world.vertices{1}(:,6);
-x = xStart(:,3);
-x = xGoal;
+x = xStart(:,1);
+% x = xGoal;
 
 plot(x(1),x(2),'bo')
 
@@ -29,7 +29,7 @@ for k = 1:length(indeces)
         target = find(idx_vec == indeces(k));
         if ~isempty(target)
             plot([x(1) world.vertices{j}(1,target)], ...
-                [x(2) world.vertices{j}(2,target)], 'r','linewidth',2);
+                [x(2) world.vertices{j}(2,target)], 'r','linewidth',1);
         end
     end
 end

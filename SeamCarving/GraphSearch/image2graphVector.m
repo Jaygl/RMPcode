@@ -1,7 +1,12 @@
 function [graphVector z] = image2graphVector(im)
 
 z = size(im);
-num_nodes = numel(im);
+%Get gradient magnitude of image
+[Gx Gy] = imgradientxy(im);
+[Gmag Gdir] = imgradient(Gx,Gy);
+Gmag = Gmag/max(max(Gmag));
+
+num_nodes = numel(im2);
 goalIdx = num_nodes + 2;
 startIdx = num_nodes + 1;
 
@@ -17,15 +22,18 @@ for k = 1:z(1)-1
 	ind = sub2ind(z,k,1);
 	graphVector(ind).x = [1; k];
 	graphVector(ind).neighbors = [sub2ind(z, k+1, 1), sub2ind(z, k+1, 2)];
+    graphVector(ind).cost = Gmag(ind);
 	for j = 2:z(2)-1
 		ind = sub2ind(z, k, j);
 		graphVector(ind).x = [j; k];
 		graphVector(ind).neighbors = [sub2ind(z, k+1, j-1) ...
 			sub2ind(z, k+1, j) sub2ind(z, k+1, j+1)];
+        graphVector(ind).cost = Gmag(ind);
 	end
 	ind = sub2ind(z,k,z(2));
 	graphVector(ind).x = [z(2); k];
 	graphVector(ind).neighbors = [sub2ind(z, k+1, z(2)-1), sub2ind(z, k+1, z(2))];
+    graphVector(ind).cost = Gmag(ind);
 end
 
 %Last row of image (only neighbor is goalNode)
@@ -33,12 +41,15 @@ for j = 1:z(2)
 	ind = sub2ind(z, z(1), j);
 	graphVector(ind).x = [z(1); j];
 	graphVector(ind).neighbors = [goalIdx];
+    graphVector(ind).cost = Gmag(ind);
 end
 
 %Initialize goalNode
 graphVector(goalIdx).x = [z(2)/2 z(1)+1];
 graphVector(goalIdx).neighbors = [];
+graphVector(goalIdx).cost = 0;
 
 %Initialize startNode
 graphVector(startIdx).x = [z(2)/2 0];
 graphVector(startIdx).neighbors = sub2ind(z, ones(1, z(2)), [1:z(2)]);
+graphVector(startIdx).cost = 0;
