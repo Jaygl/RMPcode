@@ -41,6 +41,7 @@ while ~isempty(pqOpen)
     C(end+1) = idxNBest;
     %Get the list of possible neighbors to expand, no closed nodes
     open_paths = getExpandList(graphVector, idxNBest, C);
+    
     if Debug
         close all
         disp('Nodes to expand')

@@ -19,10 +19,36 @@ idxGoal = length(graphVector);
 route = graph_search2(graphVector, idxStart, idxGoal);
 
 Gmag(route(2:end-1))= 2;
-
+droute = path2delete(graphVector, route);
+Gmag(droute) = 3;
 nx = size(im2);
 ny = nx(1);
 nx = nx(2);
 imagesc(Gmag);
+set(gca,'xtick', linspace(0.5,nx+0.5,nx+1), 'ytick', linspace(0.5,ny+.5,ny+1));
+set(gca,'xgrid', 'on', 'ygrid', 'on', 'gridlinestyle', '-', 'xcolor', 'k', 'ycolor', 'k');
+GmagC = remove_seam(Gmag, droute);
+figure
+imagesc(GmagC);
+set(gca,'xtick', linspace(0.5,nx+0.5,nx+1), 'ytick', linspace(0.5,ny+.5,ny+1));
+set(gca,'xgrid', 'on', 'ygrid', 'on', 'gridlinestyle', '-', 'xcolor', 'k', 'ycolor', 'k');
+
+Gmag = GmagC;
+graphVector = image2graphVector2(Gmag);
+idxStart = length(graphVector)-1;
+idxGoal = length(graphVector);
+route = graph_search2(graphVector, idxStart, idxGoal);
+Gmag(route(2:end-1))= 2;
+droute = path2delete(graphVector, route);
+Gmag(droute) = 3;
+nx = size(im2);
+ny = nx(1);
+nx = nx(2);
+imagesc(Gmag);
+set(gca,'xtick', linspace(0.5,nx+0.5,nx+1), 'ytick', linspace(0.5,ny+.5,ny+1));
+set(gca,'xgrid', 'on', 'ygrid', 'on', 'gridlinestyle', '-', 'xcolor', 'k', 'ycolor', 'k');
+GmagC = remove_seam(Gmag, droute);
+figure
+imagesc(GmagC);
 set(gca,'xtick', linspace(0.5,nx+0.5,nx+1), 'ytick', linspace(0.5,ny+.5,ny+1));
 set(gca,'xgrid', 'on', 'ygrid', 'on', 'gridlinestyle', '-', 'xcolor', 'k', 'ycolor', 'k');

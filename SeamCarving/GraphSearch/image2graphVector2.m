@@ -1,6 +1,6 @@
 function [graphVector z] = image2graphVector2(Gmag)
 solo = .5;
-diag = .75;
+diag = .75; %.75
 z = size(Gmag);
 num_nodes = numel(Gmag);
 goalIdx = num_nodes + 2;
@@ -33,19 +33,19 @@ end
 %Last row of image (only neighbor is goalNode)
 for j = 1:z(2)
 	ind = sub2ind(z, z(1), j);
-	graphVector(ind).x = [j z(1)];
+	graphVector(ind).x = [j; z(1)];
 	graphVector(ind).neighbors = [goalIdx];
     graphVector(ind).neighborsCost = [0];
     graphVector(ind).cost = Gmag(ind);
 end
 
 %Initialize goalNode
-graphVector(goalIdx).x = [z(2)/2 z(1)+1];
+graphVector(goalIdx).x = [z(2)/2; z(1)+1];
 graphVector(goalIdx).neighbors = [];
 graphVector(goalIdx).cost = 0;
 
 %Initialize startNode
-graphVector(startIdx).x = [z(2)/2 0];
+graphVector(startIdx).x = [z(2)/2; 0];
 graphVector(startIdx).neighbors = sub2ind(z, ones(1, z(2)), [1:z(2)]);
 graphVector(startIdx).neighborsCost = zeros(1, z(2));
 graphVector(startIdx).cost = 0;

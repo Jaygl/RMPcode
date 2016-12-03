@@ -19,7 +19,8 @@ idxStart = length(graphVector)-1;
 idxGoal = length(graphVector);
 route = graph_search2(graphVector, idxStart, idxGoal);
 
-Gmag(route(2:end-1))= 2*alpha;
+Gmag2 = Gmag;
+Gmag2(route(2:end-1))= 2*alpha;
 
 
-imagesc(Gmag);
+imagesc(Gmag2);
