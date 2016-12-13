@@ -1,7 +1,7 @@
 function [ im ] = seam_carveA( im, m, alpha, Gmag_flag )
 %SEAM_CARVEA Seam carving using A* approach on A GMAG IMAGE
 %   Detailed explanation goes here
-plot_flag = 0;
+plot_flag = 1;
 if ~Gmag_flag
     im2 = rgb2gray(im);
     im2 = im2double(im2);
